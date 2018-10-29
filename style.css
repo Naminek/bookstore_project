@@ -4,27 +4,46 @@
 }
 
 #book_list div{
-	width: 33%;
+	width: 31%;
+	margin: 1%;
 }
 
 #book_list img {
 	width: 100%;
+	opacity: 1;
+  display: block;
+  transition: .5s ease;
+  backface-visibility: hidden;
 }
 
 #book_list div:hover img{
-	height: 0;
+	opacity: 0.2;
 }
 
 #book_list p, #book_list button{
-	display: none;
+/*	display: none;*/
+  color: white;
 }
 
-#book_list div:hover p, #book_list div:hover button{
-	display: block;
+#book_list div:hover .caption{
+/*	display: block;*/
+	opacity: 1;
 }
 
-#book_list div .caption {
-	background: rgba(0,0,0,.6);
+
+.caption {
+	transition: .5s ease;
+  opacity: 0;
 	width: 100%;
 	
+/*	margin: 1%;*/
+/*
+  position: fixed;
+  top: 50%;
+  left: 50%;
+*/
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+	background-color: rgba(0,0,0,.6);
 }
