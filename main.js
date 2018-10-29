@@ -1,7 +1,7 @@
 var bookData = [];
 onload = (() => {
 
-	fetch('https://api.myjson.com/bins/udbm5', {
+	fetch('https://api.myjson.com/bins/zyv02', {
 		method: 'GET',
 		headers: {
 			'Content-Type': 'application/json'
@@ -10,8 +10,8 @@ onload = (() => {
 		return response.json();
 	}).then(function (json) {
 		console.log(json);
-    bookData = json.books;
-//makeBooksList(json);
+		bookData = json.books;
+		//makeBooksList(json);
 		console.log(bookData.length);
 		makeBooksList(bookData);
 	}).catch(function (error) {
@@ -24,30 +24,37 @@ console.log(bookData)
 
 function makeBooksList(data) {
 	for (var i = 0; i < data.length; i++) {
-    var createDiv = document.getElementById("book_list");
+		var createDiv = document.getElementById("book_list");
 		var oneBook = document.createElement("div");
-		oneBook.innerHTML = '<img src="' + data[i].portada + '"><p>' + data[i].titulo + '</p><p>' + data[i].descripcion + '<p><button type="button" onclick="">More Info</button>';
-		
+		oneBook.innerHTML = '<img src="' + data[i].cover + '"><div class="caption"><p>' + data[i].title + '</p><p>' + data[i].description + '<p><button type="button" onclick="">More Info</button></div>';
+
 		createDiv.appendChild(oneBook);
 	}
 }
 
-//function showDetails(data){
-//	for (var i = 0; i < data.length; i++) {
-//	var createDivHover = document.getElementById("book_list");
-//	var oneBookHover = document.createElement("div");
-//	oneBookHover.innerHTML = '<p>' + data[i].titulo + '</p><p>' + data[i].descripcion + '<p><button type="button" onclick="">More Info</button>';
-//	createDivHover.appendChild(oneBookHover);
-//}
-//	console.log(oneBookHover);
-//	}
-	
-//		var booksTitleList = document.getElementById('book_list');
-//		var oneBook = document.createElement('div');
-//		var oneBookTitle = document.createElement('p');
-//		oneBookTitle.textContent = booksTitle[i];
-//		var oneBookDetail = document.createElement('p');
-//		oneBookDetail.textContent = oneBookDetail[i];
-//		booksTitleList.appendChild(oneBook);
-//		oneBook.appendChild(oneBookTitle);
-//		oneBook.appendChild(oneBookTitle);
+function searchBooks(data) {
+	var inputSearch = document.getElementById("book_search");
+	var filterSearch = inputSearch.value.toUpperCase();
+	var createDiv = document.getElementById("book_list");
+	createDiv.innerHTML = "";
+	var noResultDiv = document.getElementById("no_result");
+	noResultDiv.innerHTML = "";
+	for (var i = 0; i < data.length; i++) {
+		if (filterSearch == "") {
+			var oneBook = document.createElement("div");
+			oneBook.innerHTML = '<img src="' + data[i].cover + '"><p>' + data[i].title + '</p><p>' + data[i].description + '<p><button type="button" onclick="">More Info</button>';
+
+			createDiv.appendChild(oneBook);
+		} else if ((data[i].title.toUpperCase()).indexOf(filterSearch) > -1) {
+			var oneBook = document.createElement("div");
+			oneBook.innerHTML = '<img src="' + data[i].cover + '"><p>' + data[i].title + '</p><p>' + data[i].description + '<p><button type="button" onclick="">More Info</button>';
+
+			createDiv.appendChild(oneBook);
+		} else if ((data[i].title.toUpperCase()).indexOf(filterSearch) == -1) {
+			var noResult = document.createElement("p");
+			noResult.innerHTML = 'No Result';
+			noResultDiv.append(noResult);
+		}
+	}
+
+}

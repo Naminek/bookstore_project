@@ -4,7 +4,7 @@
 }
 
 #book_list div{
-	width: 30%;
+	width: 33%;
 }
 
 #book_list img {
@@ -21,4 +21,10 @@
 
 #book_list div:hover p, #book_list div:hover button{
 	display: block;
+}
+
+#book_list div .caption {
+	background: rgba(0,0,0,.6);
+	width: 100%;
+	
 }
