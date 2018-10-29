@@ -1,0 +1,24 @@
+#book_list {
+	display: flex;
+	width: 100%;
+}
+
+#book_list div{
+	width: 30%;
+}
+
+#book_list img {
+	width: 100%;
+}
+
+#book_list div:hover img{
+	height: 0;
+}
+
+#book_list p, #book_list button{
+	display: none;
+}
+
+#book_list div:hover p, #book_list div:hover button{
+	display: block;
+}
