@@ -161,6 +161,10 @@
 	width: 80%;
 }
 
+.other_cover div img {
+	width: 90%;
+}
+
 .close {
 	color: #aaaaaa;
 	float: right;
