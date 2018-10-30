@@ -42,7 +42,7 @@ function searchBooks(data) {
 	for (var i = 0; i < data.length; i++) {
 		if (filterSearch == "") {
 			var oneBook = document.createElement("div");
-			oneBook.innerHTML = '<div class="book_image"><img src="' + data[i].cover + '"></div><div class="caption"><p>' + data[i].title + '</p><p>' + data[i].description + '<p><button type="button" onclick="">More Info</button></div>';
+			oneBook.innerHTML = '<img src="' + data[i].cover + '"><div class="caption"><p class="book_title">' + data[i].title + '</p><p class="bool_detail">' + data[i].description + '<p><button type="button" onclick="">More Info</button></div>';
 
 			createDiv.appendChild(oneBook);
 		} else if ((data[i].title.toUpperCase()).indexOf(filterSearch) > -1) {
