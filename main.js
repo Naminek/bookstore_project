@@ -36,8 +36,8 @@ function searchBooks(data) {
 	var createDiv = document.getElementById("book_list");
 	createDiv.innerHTML = "";
 	var titleUppercaseArray = data.map(book => book.title);
-//	var noResultDiv = document.getElementById("no_result");
-//	noResultDiv.innerHTML = "";
+	//	var noResultDiv = document.getElementById("no_result");
+	//	noResultDiv.innerHTML = "";
 
 	for (var i = 0; i < data.length; i++) {
 		if (filterSearch == "") {
@@ -80,25 +80,43 @@ function searchBooks(data) {
 
 function showMoreImage(target, data) {
 	var pushedButton = target.value;
-	
+
 	var createDivPhoto = document.getElementById("photo_gallery");
+
 	
-	createDivPhoto.innerHTML = "";
-	
-	var oneImage = document.createElement("div");
-	oneImage.innerHTML = '<span class="close">&times;</span><img src="' + data[pushedButton].detail + '" alt="book' + pushedButton + '">';
-	createDivPhoto.appendChild(oneImage);
+
+	function printImage(bookNumber) {
+		createDivPhoto.innerHTML = "";
+		var oneImage = document.createElement("div");
+		oneImage.innerHTML = '<span class="close">&times;</span><span class="previous_cover">&#8592</span><img src="' + data[bookNumber].detail + '" alt="book' + bookNumber + '"><span class="next_cover">&#8594</span>';
+		createDivPhoto.appendChild(oneImage);
+	}
+	printImage(pushedButton);
 
 	console.log(pushedButton);
 
 	var showCover = document.getElementById('photo_gallery');
 	showCover.style.display = "block";
-	var spanToClose = document.getElementsByClassName("close")[0]
+	var spanToClose = document.getElementsByClassName("close")[0];
 
 	spanToClose.onclick = function () {
 
 		showCover.style.display = "none";
 	}
 
+	var spanToPrevious = document.getElementsByClassName("previous_cover")[0];
+
+	spanToPrevious.onclick = function () {
+		var previous = pushedButton - 1
+		printImage(previous);
+	}
+
+	var spanToNext = document.getElementsByClassName("next_cover")[0];
+
+	spanToNext.onclick = function () {
+		var next = pushedButton + 1
+		printImage(next);
+
+	}
 
 }

@@ -130,7 +130,7 @@
 
 
 
-.photo_gallery {
+.other_cover {
 	display: none;
 	/* Hidden by default */
 	position: fixed;
@@ -153,7 +153,7 @@
 	/* Black w/ opacity */
 }
 
-.photo_gallery div {
+.other_cover div {
 	background-color: #fefefe;
 	margin: auto;
 	padding: 20px;
@@ -169,8 +169,14 @@
 }
 
 .close:hover,
-.close:focus {
+.close:focus, .previous_cover:hover, .previous_cover:focus, .next_cover:hover, .next_cover:focus {
 	color: #000;
 	text-decoration: none;
 	cursor: pointer;
+}
+
+.previous_cover, .next_cover{
+	color: #aaaaaa;
+	font-size: 28px;
+	font-weight: bold;
 }
