@@ -26,7 +26,7 @@ function makeBooksList(data) {
 	for (var i = 0; i < data.length; i++) {
 		var createDiv = document.getElementById("book_list");
 		var oneBook = document.createElement("div");
-		oneBook.innerHTML = '<img src="' + data[i].cover + '"><div class="caption"><p class="book_title">' + data[i].title + '</p><p class="book_detail text-justify">' + data[i].description + '<p><button type="button" value="book[i]" onclick="">More Info</button></div>';
+		oneBook.innerHTML = '<img src="' + data[i].cover + '"><div class="caption"><p class="book_title">' + data[i].title + '</p><p class="book_detail text-justify">' + data[i].description + '<p><button type="button" class="more_info" value="' + i + '" onclick="showMoreImage(event.target)">More Info</button></div>';
 
 		createDiv.appendChild(oneBook);
 	}
@@ -44,12 +44,12 @@ function searchBooks(data) {
 		for (var i = 0; i < data.length; i++) {
 			if (filterSearch == "") {
 				var oneBook = document.createElement("div");
-				oneBook.innerHTML = '<img src="' + data[i].cover + '"><div class="caption"><p class="book_title">' + data[i].title + '</p><p class="book_detail text-justify">' + data[i].description + '<p><button type="button" value="book[i]" onclick="">More Info</button></div>';
+				oneBook.innerHTML = '<img src="' + data[i].cover + '"><div class="caption"><p class="book_title">' + data[i].title + '</p><p class="book_detail text-justify">' + data[i].description + '<p><button type="button" class="more_info" value="' + i + '" onclick="showMoreImage(event.target)">More Info</button></div>';
 
 				createDiv.appendChild(oneBook);
 			} else if (((data[i].title.toUpperCase()).indexOf(filterSearch) > -1) || ((data[i].description.toUpperCase()).indexOf(filterSearch) > -1))  {
 				var oneBook = document.createElement("div");
-				oneBook.innerHTML = '<img src="' + data[i].cover + '"><div class="caption"><p class="book_title">' + data[i].title + '</p><p class="book_detail text-justify">' + data[i].description + '<p><button type="button" value="book[i]" onclick="">More Info</button></div>';
+				oneBook.innerHTML = '<img src="' + data[i].cover + '"><div class="caption"><p class="book_title">' + data[i].title + '</p><p class="book_detail text-justify">' + data[i].description + '<p><button type="button" class="more_info" value="' + i + '" onclick="showMoreImage(event.target)">More Info</button></div>';
 
 				createDiv.appendChild(oneBook);
 //			} else if ((data[i].title.toUpperCase()).indexOf(filterSearch) == -1) {
@@ -60,6 +60,8 @@ function searchBooks(data) {
 		}
 }
 
-function showMoreImage(data){
-	
+function showMoreImage(target){
+	var pushedButton = target.value;
+	console.log(pushedButton);
 }
+
