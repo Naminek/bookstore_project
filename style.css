@@ -1,18 +1,11 @@
-
 #book_list {
 	display: flex;
 	width: 100%;
 }
 
-#book_list div {
+#book_list div{
 	width: 31%;
 	margin: 1%;
-}
-
-.book_image {
-  width: 100%;
-  position: relative;
-  cursor: pointer;
 }
 
 #book_list img {
@@ -20,29 +13,19 @@
 }
 
 #book_list div:hover img{
-	opacity: 0.2;
+	height: 0;
 }
 
 #book_list p, #book_list button{
-
-  color: white;
-	margin: 0px;
-  padding: 0px;
+	display: none;
 }
 
-#book_list div:hover .caption{
-	opacity: 1;
+#book_list div:hover p, #book_list div:hover button{
+	display: block;
 }
 
-
-.caption {
-  background: rgba(0, 0, 0, 0.7);
-  position: absolute;
-  opacity: 0;
-  transition: all 300ms ease-in-out;
-  -webkit-transition: all 300ms ease-in-out;
-  -moz-transition: all 300ms ease-in-out;
-  -o-transition: all 300ms ease-in-out;
-  -ms-transition: all 300ms ease-in-out;
+#book_list div .caption {
+	background: rgba(0,0,0,.6);
+	width: 100%;
+	
 }
-
