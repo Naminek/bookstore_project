@@ -83,7 +83,7 @@ function showMoreImage(target, data) {
 
 	var createDivPhoto = document.getElementById("photo_gallery");
 
-	
+
 
 	function printImage(bookNumber) {
 		createDivPhoto.innerHTML = "";
@@ -95,27 +95,27 @@ function showMoreImage(target, data) {
 
 	console.log(pushedButton);
 
+	
 	var showCover = document.getElementById('photo_gallery');
 	showCover.style.display = "block";
 	var spanToClose = document.getElementsByClassName("close")[0];
-
 	spanToClose.onclick = function () {
-
 		showCover.style.display = "none";
 	}
 
+	
 	var spanToPrevious = document.getElementsByClassName("previous_cover")[0];
 
 	spanToPrevious.onclick = function () {
-		var previous = pushedButton - 1
-		printImage(previous);
+		pushedButton = pushedButton - 1
+		printImage(pushedButton);
 	}
 
 	var spanToNext = document.getElementsByClassName("next_cover")[0];
 
 	spanToNext.onclick = function () {
-		var next = pushedButton + 1
-		printImage(next);
+		pushedButton = pushedButton + 1
+		printImage(pushedButton);
 
 	}
 
