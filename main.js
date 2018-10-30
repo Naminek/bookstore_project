@@ -20,13 +20,11 @@ onload = (() => {
 })()
 
 
-console.log(bookData)
-
 function makeBooksList(data) {
 	for (var i = 0; i < data.length; i++) {
 		var createDiv = document.getElementById("book_list");
 		var oneBook = document.createElement("div");
-		oneBook.innerHTML = '<img src="' + data[i].cover + '"><div class="caption"><p class="book_title">' + data[i].title + '</p><p class="book_detail text-justify">' + data[i].description + '<p><button type="button" class="more_info" value="' + i + '" onclick="showMoreImage(event.target)">More Info</button></div>';
+		oneBook.innerHTML = '<img src="' + data[i].cover + '"><div class="caption"><p class="book_title">' + data[i].title + '</p><p class="book_detail text-justify">' + data[i].description + '<p><button type="button" class="more_info" value="' + i + '" onclick="showMoreImage(event.target, bookData)">More Info</button></div>';
 
 		createDiv.appendChild(oneBook);
 	}
@@ -44,12 +42,12 @@ function searchBooks(data) {
 		for (var i = 0; i < data.length; i++) {
 			if (filterSearch == "") {
 				var oneBook = document.createElement("div");
-				oneBook.innerHTML = '<img src="' + data[i].cover + '"><div class="caption"><p class="book_title">' + data[i].title + '</p><p class="book_detail text-justify">' + data[i].description + '<p><button type="button" class="more_info" value="' + i + '" onclick="showMoreImage(event.target)">More Info</button></div>';
+				oneBook.innerHTML = '<img src="' + data[i].cover + '"><div class="caption"><p class="book_title">' + data[i].title + '</p><p class="book_detail text-justify">' + data[i].description + '<p><button type="button" class="more_info" value="' + i + '" onclick="showMoreImage(event.target, bookData)">More Info</button></div>';
 
 				createDiv.appendChild(oneBook);
 			} else if (((data[i].title.toUpperCase()).indexOf(filterSearch) > -1) || ((data[i].description.toUpperCase()).indexOf(filterSearch) > -1))  {
 				var oneBook = document.createElement("div");
-				oneBook.innerHTML = '<img src="' + data[i].cover + '"><div class="caption"><p class="book_title">' + data[i].title + '</p><p class="book_detail text-justify">' + data[i].description + '<p><button type="button" class="more_info" value="' + i + '" onclick="showMoreImage(event.target)">More Info</button></div>';
+				oneBook.innerHTML = '<img src="' + data[i].cover + '"><div class="caption"><p class="book_title">' + data[i].title + '</p><p class="book_detail text-justify">' + data[i].description + '<p><button type="button" class="more_info" value="' + i + '" onclick="showMoreImage(event.target, bookData)">More Info</button></div>';
 
 				createDiv.appendChild(oneBook);
 //			} else if ((data[i].title.toUpperCase()).indexOf(filterSearch) == -1) {
@@ -60,7 +58,19 @@ function searchBooks(data) {
 		}
 }
 
-function showMoreImage(target){
+function showMoreImage(target,data){
+	
+	var createDivPhoto = document.getElementById("photo_gallery");
+	
+	for (var i = 0; i < data.length; i++){
+		var oneImage = document.createElement("div");
+		oneImage.innerHTML = '<img src="' + data[i].detail + '" alt="book' + i + '">';
+		console.log(oneImage);
+//		createDivPhoto.appendChild(oneImage);
+	}
+	
+	
+	
 	var pushedButton = target.value;
 	console.log(pushedButton);
 }
