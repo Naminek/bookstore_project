@@ -59,20 +59,27 @@ function searchBooks(data) {
 }
 
 //function showMoreImage(target,data){
+//	var pushedButton = target.value;
 //	var createDivPhoto = document.getElementById("photo_gallery");
 //	createDivPhoto.innerHTML = "";
+//	
+//	function printImage(bookNumber){
 //	for (var i = 0; i < data.length; i++){
 //		var oneImage = document.createElement("div");
 //	
 //		
-//		oneImage.innerHTML = '<img src="' + data[i].detail + '" alt="book' + i + '">';
-//		
+//		oneImage.innerHTML = '<div id="div' + bookNumber + '"><span class="close">&times;</span><span class="previous_cover">&#8592</span><img src="' + data[bookNumber].detail + '" alt="book' + bookNumber + '"><span class="next_cover">&#8594</span></div>';
 //		createDivPhoto.appendChild(oneImage);
 //	}
+//	}
+//	printImage(pushedButton);
 //	
-//	
-//	var pushedButton = target.value;
-//	console.log(pushedButton);
+//		var showCover = document.getElementById('div[pushedButton]');
+//	showCover.style.display = "block";
+//	var spanToClose = document.getElementsByClassName("close")[0];
+//	spanToClose.onclick = function () {
+//		showCover.style.display = "none";
+//	}
 //}
 
 
@@ -86,37 +93,42 @@ function showMoreImage(target, data) {
 
 
 	function printImage(bookNumber) {
+
 		createDivPhoto.innerHTML = "";
 		var oneImage = document.createElement("div");
 		oneImage.innerHTML = '<span class="close">&times;</span><span class="previous_cover">&#8592</span><img src="' + data[bookNumber].detail + '" alt="book' + bookNumber + '"><span class="next_cover">&#8594</span>';
 		createDivPhoto.appendChild(oneImage);
+
+		var showCover = document.getElementById('photo_gallery');
+		showCover.style.display = "block";
+		var spanToClose = document.getElementsByClassName("close")[0];
+		spanToClose.onclick = function () {
+			showCover.style.display = "none";
+		}
+
+		var spanToPrevious = document.getElementsByClassName("previous_cover")[0];
+
+		spanToPrevious.onclick = function () {
+			pushedButton = pushedButton - 1
+			printImage(pushedButton);
+		}
+
+		var spanToNext = document.getElementsByClassName("next_cover")[0];
+
+		spanToNext.onclick = function () {
+			pushedButton = pushedButton + 1
+			printImage(pushedButton);
+
+		}
 	}
 	printImage(pushedButton);
 
 	console.log(pushedButton);
 
-	
-	var showCover = document.getElementById('photo_gallery');
-	showCover.style.display = "block";
-	var spanToClose = document.getElementsByClassName("close")[0];
-	spanToClose.onclick = function () {
-		showCover.style.display = "none";
-	}
 
-	
-	var spanToPrevious = document.getElementsByClassName("previous_cover")[0];
 
-	spanToPrevious.onclick = function () {
-		pushedButton = pushedButton - 1
-		printImage(pushedButton);
-	}
 
-	var spanToNext = document.getElementsByClassName("next_cover")[0];
 
-	spanToNext.onclick = function () {
-		pushedButton = pushedButton + 1
-		printImage(pushedButton);
 
-	}
 
 }
