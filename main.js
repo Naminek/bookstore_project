@@ -71,7 +71,7 @@ function showMoreImage(target, data) {
 	function printImage() {
 		createDivPhoto.innerHTML = "";
 		var oneImage = document.createElement("div");
-		oneImage.innerHTML = '<span class="close">&times;</span><span class="previous_cover">&#60;</span><img src="' + data[pushedButton].detail + '" alt="book' + pushedButton + '"><span class="next_cover">&#62;</span>';
+		oneImage.innerHTML = '<span class="close">&times;</span><span class="previous_cover ml-3">&#60;</span><img src="' + data[pushedButton].detail + '" alt="book' + pushedButton + '"><span class="next_cover">&#62;</span>';
 		createDivPhoto.appendChild(oneImage);
 
 		var showCover = document.getElementById('photo_gallery');
