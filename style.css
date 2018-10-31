@@ -33,6 +33,10 @@
 	width: 35px;
 }
 
+#book_list {
+	width: 100%;
+}
+
 #book_list div {
 	width: 23%;
 	margin: 1%;
