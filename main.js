@@ -58,45 +58,20 @@ function searchBooks(data) {
 	}
 }
 
-//function showMoreImage(target,data){
-//	var pushedButton = target.value;
-//	var createDivPhoto = document.getElementById("photo_gallery");
-//	createDivPhoto.innerHTML = "";
-//	
-//	function printImage(bookNumber){
-//	for (var i = 0; i < data.length; i++){
-//		var oneImage = document.createElement("div");
-//	
-//		
-//		oneImage.innerHTML = '<div id="div' + bookNumber + '"><span class="close">&times;</span><span class="previous_cover">&#8592</span><img src="' + data[bookNumber].detail + '" alt="book' + bookNumber + '"><span class="next_cover">&#8594</span></div>';
-//		createDivPhoto.appendChild(oneImage);
-//	}
-//	}
-//	printImage(pushedButton);
-//	
-//		var showCover = document.getElementById('div[pushedButton]');
-//	showCover.style.display = "block";
-//	var spanToClose = document.getElementsByClassName("close")[0];
-//	spanToClose.onclick = function () {
-//		showCover.style.display = "none";
-//	}
-//}
-
 
 
 
 function showMoreImage(target, data) {
-	var pushedButton = target.value;
+	var pushedButton = parseInt(target.value);
+	// ->	to parses a string argument and returns an integer of the specified radix
+	console.log(pushedButton);
 
 	var createDivPhoto = document.getElementById("photo_gallery");
 
-
-
-	function printImage(bookNumber) {
-
+	function printImage() {
 		createDivPhoto.innerHTML = "";
 		var oneImage = document.createElement("div");
-		oneImage.innerHTML = '<span class="close">&times;</span><span class="previous_cover">&#8592</span><img src="' + data[bookNumber].detail + '" alt="book' + bookNumber + '"><span class="next_cover">&#8594</span>';
+		oneImage.innerHTML = '<span class="close">&times;</span><span class="previous_cover">&#60;</span><img src="' + data[pushedButton].detail + '" alt="book' + pushedButton + '"><span class="next_cover">&#62;</span>';
 		createDivPhoto.appendChild(oneImage);
 
 		var showCover = document.getElementById('photo_gallery');
@@ -109,26 +84,25 @@ function showMoreImage(target, data) {
 		var spanToPrevious = document.getElementsByClassName("previous_cover")[0];
 
 		spanToPrevious.onclick = function () {
-			pushedButton = pushedButton - 1
-			printImage(pushedButton);
+			if (pushedButton === 0) {
+				pushedButton = 24
+			} else {
+				pushedButton = pushedButton - 1
+			}
+			printImage();
 		}
 
 		var spanToNext = document.getElementsByClassName("next_cover")[0];
 
 		spanToNext.onclick = function () {
-			pushedButton = pushedButton + 1
-			printImage(pushedButton);
-
+			if (pushedButton === 24) {
+				pushedButton = 0
+			} else {
+				pushedButton = pushedButton + 1
+			}
+			printImage();
 		}
 	}
-	printImage(pushedButton);
-
-	console.log(pushedButton);
-
-
-
-
-
-
+	printImage();
 
 }
